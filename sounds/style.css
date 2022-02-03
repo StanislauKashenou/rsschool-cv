@@ -1,0 +1,123 @@
+body {
+   min-height: 100vh;
+   padding: 0;
+   margin: 0;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   background: #000;
+   color: #fff;
+   font-size: 22px;
+   overflow-x: hidden;
+}
+
+a {
+   text-decoration: none;
+   color: #fff;
+}
+a:hover {
+   color: #BDAE82;
+   transition: 0.3s;
+}
+img {
+   display: block;
+}
+
+
+.container {
+   width: 100%;
+   max-width: 1440px;
+   margin: 0 auto;
+   padding: 5px 0;
+}
+.header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 10px;
+}
+.header-logo {
+   background-image: url(./assets/svg/logo.svg);
+   background-size: cover;
+   height: 60px;
+   width: 60px;
+}
+.header-logo:hover {
+   transition: 0.3s;
+   filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+}
+
+.header-list {
+   display: flex;
+   justify-content: space-between;
+}
+.nav {
+   margin-left: auto;
+} 
+li {
+   cursor: pointer;
+   list-style: none;
+   padding: 0 10px;
+}
+li:hover {
+   color: #BDAE82;
+   transition: 0.3s;
+}
+.main {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-image: url(./assets/img/forest.jpg);
+   background-size: cover;
+   background-position: center;
+   height: 100vh;
+
+}
+.button {
+   background-image: url(./assets/svg/play.svg);
+   background-size: contain;
+   height: 120px;
+   width: 120px;
+   cursor: pointer;
+   background-color: transparent; 
+   border: none;
+}
+
+.button:hover {
+   height: 125px;
+   width: 125px;
+   transition: 0.3s;
+}
+.footer {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 5px;
+}
+.footer-left {
+   display: flex;
+   justify-content: space-between;
+}
+.footer-left p{
+   padding: 0 10px;
+}
+.footer-right {
+   background-image: url(./assets/svg/rss.svg);
+   background-size: cover;
+   height: 60px;
+   width: 160px;
+   cursor: pointer;
+}
+.footer-right:hover {
+   transition: 0.3s;
+   filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+}
+.pause {
+   background-image: url(./assets/svg/pause.svg);
+   background-size: contain;
+   height: 120px;
+   width: 120px;
+   cursor: pointer;
+   background-color: transparent; 
+   border: none;
+}
