@@ -1,12 +1,14 @@
 const playBtn = document.querySelector(".button");
-const pauseBtn = document.querySelector(".pause-btn");
 const audio = new Audio();
 let isPlay = false;
-const playNum = 0;
+const sound = document.querySelector(".header");
+let image = document.querySelector(".main");
+const btn = document.querySelectorAll(".header-item");
+const btns = document.querySelector(".header-list");
 
 function playAudio() {
-  audio.src = "https://7oom.ru/audio/naturesounds/07%20Birds%20(7oom.ru).mp3";
   audio.currentTime = 0;
+  // audio.src = `./assets/audio/forest.mp3`;
   if (!isPlay) {
     audio.play();
     isPlay = true;
@@ -15,18 +17,21 @@ function playAudio() {
     isPlay = false;
   }
 }
-
 playBtn.addEventListener("click", playAudio);
 
 function toggleBtn() {
-  if (!isPlay) {
-    playBtn.classList.add("pause");
-  } else {
-    playBtn.classList.remove("pause");
-  }
+  playBtn.classList.toggle("pause");
 }
 playBtn.addEventListener("click", toggleBtn);
 
-function playNext() {}
+function changeSound(event) {
+  audio.src = `./assets/audio/forest.mp3`;
+  if (event.target.classList.contains("header-item")) {
+    audio.src = `./assets/audio/${event.target.dataset.head}.mp3`;
+    image.style.backgroundImage = `url('./assets/img/${event.target.dataset.head}.jpg')`;
+    btn.forEach((el) => el.classList.remove("active"));
+    event.target.classList.toggle("active");
+  }
+}
 
-function playPrev() {}
+sound.addEventListener("click", changeSound);
