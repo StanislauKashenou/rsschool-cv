@@ -1,37 +1,55 @@
 const playBtn = document.querySelector(".button");
 const audio = new Audio();
+audio.src = `./assets/audio/forest.mp3`;
 let isPlay = false;
-const sound = document.querySelector(".header");
+const header = document.querySelector(".header");
 let image = document.querySelector(".main");
-const btn = document.querySelectorAll(".header-item");
-const btns = document.querySelector(".header-list");
 
-function playAudio() {
-  audio.currentTime = 0;
-  // audio.src = `./assets/audio/forest.mp3`;
+function toggleAudio() {
   if (!isPlay) {
-    audio.play();
-    isPlay = true;
+    startAudio()
   } else {
-    audio.pause();
-    isPlay = false;
+    pauseAudio()
   }
 }
-playBtn.addEventListener("click", playAudio);
+function startAudio() {
+  audio.currentTime = 0;
+  audio.play();
+  isPlay = true;
+}
+function pauseAudio() {
+  audio.pause();
+  isPlay = false;
+}
+
+playBtn.addEventListener("click", toggleAudio);
 
 function toggleBtn() {
-  playBtn.classList.toggle("pause");
+  isPlay ? playBtn.classList.add("pause") : playBtn.classList.remove("pause")
 }
+function toggleMenuItem(event) {
+  document.querySelector(".header-item.active").classList.remove("active")
+  event.target.classList.add("active");
+}
+
 playBtn.addEventListener("click", toggleBtn);
 
-function changeSound(event) {
-  audio.src = `./assets/audio/forest.mp3`;
-  if (event.target.classList.contains("header-item")) {
-    audio.src = `./assets/audio/${event.target.dataset.head}.mp3`;
-    image.style.backgroundImage = `url('./assets/img/${event.target.dataset.head}.jpg')`;
-    btn.forEach((el) => el.classList.remove("active"));
-    event.target.classList.toggle("active");
+function setAudio(event) {
+  audio.src = `./assets/audio/${event.target.dataset.head}.mp3`;
+}
+function setImage(event) {
+  image.style.backgroundImage = `url('./assets/img/${event.target.dataset.head}.jpg')`;
+}
+function setTheme(event) {
+  const isValidElement = event.target.classList.contains("header-item");
+  if (isValidElement) {
+    setAudio(event);
+    setImage(event);
+    startAudio();
+    toggleBtn();
+    toggleMenuItem(event);
   }
 }
 
-sound.addEventListener("click", changeSound);
+
+header.addEventListener("click", setTheme);
